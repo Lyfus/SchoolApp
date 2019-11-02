@@ -65,18 +65,49 @@ namespace SchoolLibrary
 
         // Exemple : School SUPINFO = new School();
         // School.AverageThreeScores(10.2, 18.7, 14,6)
-        public float AverageThreeScores(float a, float b, float c)
+        //public float AverageThreeScores(float a, float b, float c)
+        //{
+        //    var result = (a + b + c) / 3;
+        //    return result;
+        //}
+
+        // Expression "Bodied" de la fonction AverageThreeScores, ce qui permet de ne pas utiliser le mot clef "return"
+        public static float AverageThreeScores(float a, float b, float c) => (a + b + c) / 3;
+        // Méthode du même nom que celle avec le type de retour float, mais comme nous retournons
+        // un nouveau type, celle ci est considérée comme nouvelle, et non comme une surcharge
+        // Ici nous avons ajouté le mot clef "static" pour rendre la méthode accessible sans instanciation de la classe. 
+        // Exemple : School.AverageThreeScores(1,2,3) sera accessible sans instancier un objet School
+        public static int AverageThreeScores(int a, int b, int c)
         {
             var result = (a + b + c) / 3;
             return result;
         }
 
-        // Méthode du même nom que celle avec le type de retour float, mais comme nous retournons
-        // un nouveau type, celle ci est considérée comme nouvelle, et non comme une surcharge
-        public int AverageThreeScores(int a, int b, int c)
+        // Exemple d'override, ici de la méthode ToString()
+        // L'override sert à ajouter ou modifier l'utilisation primaire de la méthode de base.
+        public override string ToString()
         {
-            var result = (a + b + c) / 3;
-            return result;
+            var sb = new StringBuilder();
+            // this ici renvoie à l'instance x de la classe, ce qui nous permet
+            // D'accèder à la propriété Name de l'objet School qui sera instancié
+            // Cependant this est ici explicite et n'est pas nécéssaire.
+            sb.AppendLine(this.Name);
+            // Nous voyons que nous accèdons à la propriété Address malgré l'absence du mot clef "this"
+            sb.AppendLine(Address);
+            // Ici on remontre la construction d'une chaîne dites "complexe" avec un StringBuilder
+            sb.Append(City);
+            sb.Append(", ");
+            sb.Append(State);
+            sb.Append("  ");
+            sb.Append(Zip);
+
+            // Au lieu de retourne base.ToString(), c'est à dire la structure de l'objet
+            // Nous retournons la chaîne sb, construite avec le StringBuilder
+            return sb.ToString(); // Ici nous renverrons une chaine de format : 
+            // {Name}
+            // {Addresse}
+            // {City}
+            // ,{State}  {Zip}  
         }
     }
 }
