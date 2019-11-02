@@ -52,6 +52,10 @@ namespace SchoolFormsApp
             // Entrée de TwitterAdresse invalide provoquant une erreur
             //testSchool.TwitterAdresse = "invalid name";
 
+            // Vérification que la class Person ne peux pas être instanciée
+            //var student = new Person(); // Ne fonctionne pas car Person est abstraite
+            var teacher = new Teacher();
+            teacher.
         }
     }
 }
