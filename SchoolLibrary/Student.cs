@@ -15,5 +15,18 @@ namespace SchoolLibrary
         {
             return 4.0f;
         }
+
+        // Override de la méthode virtuelle SendMessage de Person
+        public override string SendMessage(string message)
+        {
+            // base renvoit ici aux éléments de la méthode SendMessage dans Person
+            var original = base.SendMessage(message);
+
+            // Pour rappel, StringBuilder(string) permet de travailler sur un texte déjà imposé
+            // Ou "Seed"
+            var sb = new StringBuilder(original);
+            sb.AppendLine("This message is private and confidential.");
+            return sb.ToString();
+        }
     }
 }

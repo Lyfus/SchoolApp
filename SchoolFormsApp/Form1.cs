@@ -55,7 +55,22 @@ namespace SchoolFormsApp
             // Vérification que la class Person ne peux pas être instanciée
             //var student = new Person(); // Ne fonctionne pas car Person est abstraite
             var teacher = new Teacher();
-            teacher.
+        }
+
+        private void btnTestTeacher_Click(object sender, EventArgs e)
+        {
+            var teacher = new Teacher();
+            var gp = teacher.ComputeGradeAverage();
+            MessageBox.Show("The teacher's grade average is " + gp);
+        }
+
+        private void btnTestStudent_Click(object sender, EventArgs e)
+        {
+            {
+                var student = new Student();
+                var gp = student.ComputeGradeAverage();
+                MessageBox.Show("The student's grade average is " + gp);
+            }
         }
     }
 }

@@ -10,7 +10,21 @@ namespace SchoolLibrary
         public string LastName { get; set; }
         public string Email { get; set; }
 
-        // Méthode abstraite 
+        // Méthode abstraite, devant être override pour être utilisée
         public abstract float ComputeGradeAverage();
+
+        // Méthode virtuelle, méthode pouvant être modifié par le membre qui hérite de la classe Person
+        public virtual string SendMessage(string message)
+        {
+            var sb = new StringBuilder();
+            var timeStamp = string.Format("Send on {0:D} at {0:t}", DateTime.Now);
+
+            sb.AppendLine(timeStamp);
+            sb.AppendLine("");
+            sb.AppendLine("Dead " + Firstname + ",");
+            sb.AppendLine(message);
+
+            return sb.ToString();
+        }
     }
 }
